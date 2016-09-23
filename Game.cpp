@@ -13,7 +13,9 @@ int main(){
   window = SDL_CreateWindow("Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
     if (window == NULL){
       std::cout<<"Window cannot be created"<<std::endl;
-       std::cout<<SDL_GetError()<<std::endl;}
+       std::cout<<SDL_GetError()<<std::endl;
+     }
+
     else{ renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_TARGETTEXTURE);
       mapsurface = SDL_LoadBMP("img/map.bmp");
       maptex = SDL_CreateTextureFromSurface(renderer, mapsurface);
@@ -26,10 +28,14 @@ int main(){
          if (event.type == SDL_QUIT){
            break;
          }
+         else if (event.type == SDL_KEYDOWN){
+           if( event.key.keysym.sym == SDLK_a){
+           break;
+         }
+       }
+     }
            SDL_RenderClear(renderer);
-           //SDL_FreeSurface(mapsurface);
            SDL_RenderCopy(renderer, maptex, NULL, NULL);
-           //SDL_RenderCopy(renderer,texture,&srcrect, &dstrect); // Copie du sprite grâce au SDL_Renderer
            SDL_RenderPresent(renderer);
          }
      SDL_DestroyTexture(maptex);
@@ -37,5 +43,4 @@ int main(){
    }
    SDL_DestroyWindow(window);
    SDL_Quit();
-}
 }
