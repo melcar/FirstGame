@@ -1,7 +1,7 @@
 #include "fct.hpp"
 
 int main(){
-  SDL_Window *window = NULL;
+    SDL_Window *window = NULL;
   SDL_Renderer *renderer = NULL;
   SDL_Surface *mapsurface = NULL;
   SDL_Texture * maptex = NULL;
@@ -12,7 +12,7 @@ int main(){
     if (window == NULL){
       std::cout<<"Window cannot be created"<<std::endl;
        std::cout<<SDL_GetError()<<std::endl;
-     }  
+     }
 
     else{ renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_TARGETTEXTURE);
       mapsurface = SDL_LoadBMP("img/map.bmp");

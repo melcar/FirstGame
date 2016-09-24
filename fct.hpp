@@ -8,6 +8,8 @@ class Game{
   public:
     Game(const char *Title);
     ~Game();
+    void GameStart();
+    void GameQuit();
     const char *GetTitle();
   private:
     const char *_Title;
@@ -17,6 +19,7 @@ class Game{
     public:
       Window(int width, int height, const char * Title);
       ~Window();
+      void DeleteWindow();
       SDL_Window *GetWindow();
     private:
       int _Width; int _Height;
@@ -29,6 +32,7 @@ class Game{
       ~Background();
     private:
   };
+
   class Character{
     public:
       Character();
