@@ -11,26 +11,28 @@ class Game{
     const char *GetTitle();
   private:
     const char *_Title;
-    class Window{
-      public:
-        Window(int width, int height, const char * Title);
-        ~Window();
-        SDL_Window *GetWindow();
-      private:
-        int _Width; int _Height;
-        SDL_Window *_Window;
-        class Background{
-          public:
-            Background();
-            ~Background();
-          private:
-        };
-        class Character{
-          public:
-            Character();
-            ~Character();
-          private:
-      };
-    };
   };
+
+  class Window{
+    public:
+      Window(int width, int height, const char * Title);
+      ~Window();
+      SDL_Window *GetWindow();
+    private:
+      int _Width; int _Height;
+      SDL_Window *_Window;
+  };
+
+  class Background{
+    public:
+      Background();
+      ~Background();
+    private:
+  };
+  class Character{
+    public:
+      Character();
+      ~Character();
+    private:
+};
 #endif
