@@ -1,2 +1,5 @@
-#include <SDL2/SDL.h>
-#include <iostream>
+#include "fct.hpp"
+
+Game::Game(std::string Title){
+  
+};
