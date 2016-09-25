@@ -26,5 +26,5 @@ Window::~Window(){
 
 }
 void Window::DeleteWindow(){
-  SDL_DestroyWindow(Window::GetWindow());
+  //SDL_DestroyWindow(Window::GetWindow());
 }
