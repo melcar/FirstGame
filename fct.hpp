@@ -33,10 +33,11 @@ class Game{
     private:
   };
 
-  class Character{
+  class Sprite{
     public:
-      Character();
-      ~Character();
+      Sprite();
+      ~Sprite();
+      void animation(){};
     private:
 };
 #endif
