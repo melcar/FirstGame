@@ -21,10 +21,11 @@ Window::Window(int width, int height, const char * title){
   Window::_Height = height;
   SDL_Init(SDL_INIT_VIDEO);
   Window::_Window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
+  Window::_Renderer =  SDL_CreateRenderer(Window::_Window, -1, SDL_RENDERER_TARGETTEXTURE);
 }
-Window::~Window(){
 
+Window::~Window(){
 }
 void Window::DeleteWindow(){
-  //SDL_DestroyWindow(Window::GetWindow());
+  SDL_DestroyWindow(Window::_Window);
 }

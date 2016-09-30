@@ -20,10 +20,11 @@ class Game{
       Window(int width, int height, const char * Title);
       ~Window();
       void DeleteWindow();
-      SDL_Window *GetWindow();
+
     private:
       int _Width; int _Height;
       SDL_Window *_Window;
+      SDL_Renderer *_Renderer;
   };
 
   class Background{
