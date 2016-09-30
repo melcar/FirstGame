@@ -36,12 +36,14 @@ class Window{
 
 class Game{
   public:
-    Game(const char *Title);
+    Game();
     ~Game();
     void GameStart();
     void GameQuit();
   private:
-    const char *_Title;
-    Window *_Window;
+    Window _Window;
+    int width = 640;
+    int height = 480;
+    const char * Title = "Ninja Maiden";
   };
 #endif

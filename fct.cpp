@@ -1,18 +1,19 @@
 #include "fct.hpp"
 
-Game::Game(const char *Title){
+Game::Game(){
   //initiate the Game
-  Game::_Title = Title;
 };
 Game::~Game(){};
 
 void Game::GameStart(){
+  Game::_Window::CreateWindow(Game::width, Game::height, Game::Title);
 }
 
 void Game::GameQuit(){
 }
 
 Window::Window(){
+
 }
 
 void Window::CreateWindow(int width, int height, const char * Title){
