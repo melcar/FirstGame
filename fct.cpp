@@ -6,7 +6,7 @@ Game::Game(){
 Game::~Game(){};
 
 void Game::GameStart(){
-  Game::_Window::CreateWindow(Game::width, Game::height, Game::Title);
+  Game::_Window.CreateWindow(Game::width, Game::height, Game::Title);
 }
 
 void Game::GameQuit(){
@@ -25,8 +25,19 @@ void Window::CreateWindow(int width, int height, const char * Title){
   Window::_Renderer =  SDL_CreateRenderer(Window::_Window, -1, SDL_RENDERER_TARGETTEXTURE);
 }
 
+void Window::CreateSprite(){
+
+}
+void Window::RefreshWindow(){
+
+}
 Window::~Window(){
 }
 void Window::DeleteWindow(){
   SDL_DestroyWindow(Window::_Window);
 }
+
+Background::Background(){}
+Background::~Background(){}
+Sprite::Sprite(){}
+Sprite::~Sprite(){}
