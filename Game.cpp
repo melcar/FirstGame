@@ -1,12 +1,18 @@
 #include "fct.hpp"
 
+
 int main(){
     SDL_Window *window = NULL;
   SDL_Renderer *renderer = NULL;
-  SDL_Texture * maptex = NULL;
+  SDL_Texture * Background = NULL;
   int width = 640, height = 480;
-  SDL_Texture *persotex = NULL;
+  SDL_Texture *Perso = NULL;
   int x , y;
+  SDL_Texture *Text;
+  long int Time =0;
+  std::string str_Time;
+  const char *char_Time ;
+
 
   SDL_Init(SDL_INIT_VIDEO);
   window = SDL_CreateWindow("Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
@@ -17,16 +23,23 @@ int main(){
 
     else{ renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_TARGETTEXTURE);
 
-      maptex = SDL_CreateTextureFromSurface(renderer, SDL_LoadBMP("img/map.bmp"));
+      Background = SDL_CreateTextureFromSurface(renderer, SDL_LoadBMP("img/map.bmp"));
 
-      persotex = SDL_CreateTextureFromSurface(renderer, SDL_LoadBMP("img/perso.bmp"));
+      Perso = SDL_CreateTextureFromSurface(renderer, SDL_LoadBMP("img/perso.bmp"));
 
-      SDL_Rect srcrect = { 0,0,400,400  };
+      TTF_Init();
+      //SDL_Surface *TTF_RenderText_Solid(TTF_Font *font, const char *text, SDL_Color fg);
+      TTF_Font *font = TTF_OpenFont("font/3Dventure.ttf", 65);
+      SDL_Color Color = {20, 100, 30};
+
+
+      //Text = SDL_CreateTextureFromSurface(renderer,TTF_RenderText_Solid(font, "222.", Color));
+
+      SDL_Rect srcrect = { 0,0,400,400};
       x = 150;
       y = 150;
-      SDL_Rect dstrect = { x,y, 64, 64 };
-      SDL_RenderCopy(renderer,persotex,&srcrect, &dstrect);
-
+      //SDL_Rect dstrect = { x,y, 64, 64 };
+      int start_Time = SDL_GetTicks();
       while (1) {
        SDL_Event event;
        if (SDL_PollEvent(&event)) {
@@ -51,14 +64,23 @@ int main(){
          }
        }
      }
+           Time = (SDL_GetTicks() - start_Time);
+           str_Time = std::to_string(Time);
+           char_Time = str_Time.c_str();
+           Text = SDL_CreateTextureFromSurface(renderer,TTF_RenderText_Solid(font, char_Time, Color));
            SDL_Rect dstrect = { x,y, 64, 64 };
            SDL_RenderClear(renderer);
-           SDL_RenderCopy(renderer, maptex, NULL, NULL);
-           SDL_RenderCopy(renderer,persotex,&srcrect, &dstrect);
+           SDL_RenderCopy(renderer, Background, NULL, NULL);
+           SDL_RenderCopy(renderer,Text, NULL, NULL);
+           SDL_RenderCopy(renderer,Perso,&srcrect, &dstrect);
            SDL_RenderPresent(renderer);
+           SDL_DestroyTexture(Text);
          }
-     SDL_DestroyTexture(maptex);
-     SDL_DestroyTexture(persotex);
+     TTF_CloseFont(font);
+     TTF_Quit();
+     SDL_DestroyTexture(Text);
+     SDL_DestroyTexture(Background);
+     SDL_DestroyTexture(Perso);
      SDL_DestroyRenderer(renderer);
    }
    SDL_DestroyWindow(window);
