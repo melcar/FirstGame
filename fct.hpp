@@ -6,10 +6,12 @@
 
   class Background{
     public:
-      Background();
+      Background(SDL_Renderer *Renderer, const  char *file);
       ~Background();
+      SDL_Texture * Get_Background();
     private:
-  };
+      SDL_Texture* _texture;
+      };
 
   class Sprite{
     public:
@@ -19,9 +21,5 @@
     private:
       int posX;
       int posY;
-
 };
-
-
-
 #endif

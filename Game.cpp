@@ -3,10 +3,8 @@
 int main(){
     SDL_Window *window = NULL;
   SDL_Renderer *renderer = NULL;
-  SDL_Surface *mapsurface = NULL;
   SDL_Texture * maptex = NULL;
   int width = 640, height = 480;
-  SDL_Surface *perso = NULL;
   SDL_Texture *persotex = NULL;
   int x , y;
 
@@ -18,13 +16,11 @@ int main(){
      }
 
     else{ renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_TARGETTEXTURE);
-      mapsurface = SDL_LoadBMP("img/map.bmp");
-      maptex = SDL_CreateTextureFromSurface(renderer, mapsurface);
-      SDL_FreeSurface(mapsurface);
 
-      perso = SDL_LoadBMP("img/perso.bmp");
-      persotex = SDL_CreateTextureFromSurface(renderer, perso);
-      SDL_FreeSurface(perso);
+      maptex = SDL_CreateTextureFromSurface(renderer, SDL_LoadBMP("img/map.bmp"));
+
+      persotex = SDL_CreateTextureFromSurface(renderer, SDL_LoadBMP("img/perso.bmp"));
+
       SDL_Rect srcrect = { 0,0,400,400  };
       x = 150;
       y = 150;
