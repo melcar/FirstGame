@@ -4,7 +4,6 @@
 int main(){
     SDL_Window *window = NULL;
   SDL_Renderer *renderer = NULL;
-  SDL_Texture * Background = NULL;
   int width = 640, height = 480;
   SDL_Texture *Text;
   long int Time =0;
@@ -24,6 +23,7 @@ int main(){
       TTF_Init();
       //SDL_Surface *TTF_RenderText_Solid(TTF_Font *font, const char *text, SDL_Color fg);
       TTF_Font *font = TTF_OpenFont("font/BebasNeue.otf", 65);
+
       SDL_Color Color = {255, 255, 255};
 
       int start_Time = SDL_GetTicks();
@@ -39,15 +39,16 @@ int main(){
            char_Time = str_Time.c_str();
            Text = SDL_CreateTextureFromSurface(renderer,TTF_RenderText_Solid(font, char_Time, Color));
            SDL_RenderClear(renderer);
-           SDL_RenderCopy(renderer, Background, NULL, NULL);
            SDL_RenderCopy(renderer,Text, NULL, NULL);
            SDL_RenderPresent(renderer);
            SDL_DestroyTexture(Text);
          }
      TTF_CloseFont(font);
      TTF_Quit();
-     SDL_DestroyTexture(Text);
-     SDL_DestroyTexture(Background);
+
+     if(Text){
+     SDL_DestroyTexture(Text);}
+     
      SDL_DestroyRenderer(renderer);
    }
    SDL_DestroyWindow(window);
