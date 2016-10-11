@@ -25,16 +25,27 @@ int main(){
 
 
       SDL_Rect srcrect = { 0,0,400,400};
-      x = 150;
-      y = 150;
+      x = 0;
+      y = 0;
       //SDL_Rect dstrect = { x,y, 64, 64 };
       while (1) {
+        if (y!= height -64){
+          if(y < height -64){
+            y= y+1;
+          }
+          else if(y > height -64){
+            y = height - 64;
+          }
+
+        }
        SDL_Event event;
-       if (SDL_PollEvent(&event)) {
-         if (event.type == SDL_QUIT){
+        if (SDL_PollEvent(&event)) {
+         if (event.type == SDL_QUIT or  event.key.keysym.sym == SDLK_a){
            break;
          }
-
+         else if(event.key.keysym.sym == SDLK_SPACE and y == height -64){
+           y -= 250;
+         }
        }
 
 
